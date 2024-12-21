@@ -1,4 +1,6 @@
 using datalayers;
+using datalayers.Abstract;
+using datalayers.Concrate;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +9,25 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<context>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Register Repositories (Dal)
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+
+
+builder.Services.AddScoped<IBeautyCardInfoDal, BeautyCardInfoDal>();
+builder.Services.AddScoped<IBeautyCategoryDal, BeautyCategoryDal>();
+builder.Services.AddScoped<IBeautyItemDal, BeautyItemsDal>();
+builder.Services.AddScoped<IBeautyServiesItemDal, BeautymultiItemsServiceDal>();
+builder.Services.AddScoped<IBeautysServicesDal, BeautysServicesDal>();
+builder.Services.AddScoped<ICompanyDal, CompanyDal>();
+builder.Services.AddScoped<IContactDal, ContactDal>();
+builder.Services.AddScoped<IFaqDal, FaqDal>();
+builder.Services.AddScoped<IHaircutMenuCategoryDal, HaircutMenuCategoryDal>();
+builder.Services.AddScoped<IHaircutMenuItemDal, HaircutMenuItemDal>();
+builder.Services.AddScoped<IHaircutServicesCategoryDal, HaircutServicesCategoryDal>();
+builder.Services.AddScoped<IHaircutServiceDal, HaircutServicesDal>();
+builder.Services.AddScoped<IHaircutSupServiceDal, HairCutSupServicesDal>();
+builder.Services.AddScoped<IHairCutTeammemberDal, HairCutTeammemberDal>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
