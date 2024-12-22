@@ -9,5 +9,6 @@ namespace datalayers.Abstract
 {
     public interface IHaircutMenuItemDal:IGenericRepository<HaircutMenuItem>
     {
+        Task<IEnumerable<HaircutMenuItem>> GetAllWithCategoryAsync();
     }
 }

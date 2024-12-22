@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace datalayers.Abstract
 {
     public interface IHaircutSupServiceDal : IGenericRepository<HaircutSupService>
-    {/*
-        Task<IEnumerable<HaircutSupService>> GetByServiceIdAsync(int serviceId);*/
+    {
+        Task<IEnumerable<HaircutSupService>> GetByServiceIdAsync(int serviceId);
     }
 }
