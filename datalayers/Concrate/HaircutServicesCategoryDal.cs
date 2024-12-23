@@ -57,7 +57,7 @@ namespace datalayers.Concrate
                         if (!supService.IsDeleted)
                         {
                             supService.IsDeleted = true;
-                            _context.HairCutSupServices.Update(supService);
+                            _context.HaircutSupServices.Update(supService);
                         }
                     }
 
@@ -93,7 +93,7 @@ namespace datalayers.Concrate
                         if (supService.IsDeleted)
                         {
                             supService.IsDeleted = false;
-                            _context.HairCutSupServices.Update(supService);
+                            _context.HaircutSupServices.Update(supService);
                         }
                     }
 
