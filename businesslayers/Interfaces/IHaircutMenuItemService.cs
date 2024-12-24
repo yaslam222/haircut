@@ -9,5 +9,6 @@ namespace businesslayers.Interfaces
 {
     public interface IHaircutMenuItemService : IGenericServices<HaircutMenuItem>
     {
+        Task<IEnumerable<HaircutMenuItem>> GetAllWithCategoryAsync();
     }
 }

@@ -12,10 +12,17 @@ namespace businesslayers.Services
     public class HaircutMenuItemService:GenericServices<HaircutMenuItem>,IHaircutMenuItemService
     {
         private readonly IHaircutMenuItemDal _haircutmenuitemDal;
-        public HaircutMenuItemService(IHaircutMenuItemDal haircutmenuitemService) :base(haircutmenuitemService)
+        public HaircutMenuItemService(IHaircutMenuItemDal haircutmenuitemService) : base(haircutmenuitemService)
         {
             _haircutmenuitemDal = haircutmenuitemService;
+
+
+
         }
-            }
+        public async Task<IEnumerable<HaircutMenuItem>> GetAllWithCategoryAsync()
+        {
+            return await _haircutmenuitemDal.GetAllWithCategoryAsync();
+        }
+    }   
 
 }

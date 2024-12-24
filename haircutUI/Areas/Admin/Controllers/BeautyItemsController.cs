@@ -1,0 +1,48 @@
+﻿using businesslayers.Interfaces;
+using entitylayers;
+using haircutUI.ViewModel;
+using Microsoft.AspNetCore.Mvc;
+
+namespace haircutUI.Areas.Admin.Controllers
+{
+    public class BeautyItemsController : Controller
+    {
+        private readonly IBeautyCategoryService _categoryService;
+        private readonly IBeautyItemService _BeautyitemsService;
+
+        public BeautyItemsController(IBeautyCategoryService categoryService, IBeautyItemService BeautyitemsService)
+        {
+            _categoryService = categoryService;
+            _BeautyitemsService = BeautyitemsService;
+        }
+        public async Task<IActionResult> Index(int? categoryid)
+        {
+            var categories = await _categoryService.GetAllAsync();
+            IEnumerable<BeautyItem> beautyItems;
+            if (categoryid.HasValue)
+            {
+                beautyItems = await _BeautyitemsService.GetByCategoryIdAsync(categoryid.Value);
+            }
+            else
+            {
+                beautyItems = await _BeautyitemsService.GetAllAsync();
+            }
+            var beautyitems = await _BeautyitemsService.GetAllAsync();
+
+            // Map beauty items to the view model, including the category name
+            var model = beautyItems.Select(item => new BeautyItemsViewModel
+            {
+                Id = item.Id,
+                ServiceName = item.ServiceName ?? "",
+                Duration = item.Duration,
+                Price = item.Price,
+                Description = item.Description,
+                BeautyCategoryId = item.BeautyCategoryId,
+                CategoryName = categories.FirstOrDefault(c => c.Id == item.BeautyCategoryId)?.Name ?? "Deleted Category",
+                IsDeleted = item.IsDeleted
+            }).ToList();
+
+            return View(model);
+        }
+    }
+}

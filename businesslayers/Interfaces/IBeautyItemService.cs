@@ -9,5 +9,7 @@ namespace businesslayers.Interfaces
 {
     public interface IBeautyItemService : IGenericServices<BeautyItem>
     {
+        Task<IEnumerable<BeautyItem>> GetByCategoryIdAsync(int categoryId);
+
     }
 }

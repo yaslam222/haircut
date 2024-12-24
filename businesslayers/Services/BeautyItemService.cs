@@ -16,6 +16,10 @@ namespace businesslayers.Services
         {
             _beautyItemDal = beautyItemService;
         }
+        public async Task<IEnumerable<BeautyItem>> GetByCategoryIdAsync(int categoryId)
+        {
+            return await _beautyItemDal.GetByCategoryIdAsync(categoryId);
+        }
 
     }
 }
