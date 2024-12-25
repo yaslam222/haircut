@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace haircutUI.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class BeautyCategoryController : Controller
     {
         private readonly IBeautyCategoryService _categoryService;
@@ -85,7 +86,7 @@ namespace haircutUI.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(BeautyCategoryViewModel vm)
         {
             if (!ModelState.IsValid)
-                return PartialView("_EditCategory", vm);
+                return PartialView("_Edit", vm);
 
             var existing = await _categoryService.GetByIdAsync(vm.Id);
             if (existing == null) return NotFound();

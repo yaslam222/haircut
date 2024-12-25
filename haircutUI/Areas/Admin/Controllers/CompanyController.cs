@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace haircutUI.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CompanyController : Controller
     {
         private readonly ICompanyService _service;

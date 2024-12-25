@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\Template\vendor\jquery-smartwizard\.github\FUNDING.yml" />
+    <None Include="wwwroot\Template\vendor\jquery-smartwizard\.github\ISSUE_TEMPLATE\bug_report.md" />
+    <None Include="wwwroot\Template\vendor\jquery-smartwizard\.github\ISSUE_TEMPLATE\feature_request.md" />
+    <None Include="wwwroot\Template\vendor\jquery-smartwizard\.github\pull_request_template.md" />
+    <None Include="wwwroot\Template\vendor\tagify\.github\ISSUE_TEMPLATE\bug_report.md" />
+    <None Include="wwwroot\Template\vendor\tagify\.github\ISSUE_TEMPLATE\feature_request.md" />
+    <None Include="wwwroot\Template\vendor\tagify\.github\ISSUE_TEMPLATE\help-with-something.md" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.36">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

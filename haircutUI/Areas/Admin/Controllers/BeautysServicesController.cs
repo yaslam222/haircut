@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace haircutUI.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class BeautysServicesController : Controller
     {
+        
         private readonly IBeautysServicesService _service;
 
         public BeautysServicesController(IBeautysServicesService service)

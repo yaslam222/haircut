@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace haircutUI.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class FaqController : Controller
     {
         private readonly IFaqService _faqService;
