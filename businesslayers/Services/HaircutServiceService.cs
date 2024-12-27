@@ -1,5 +1,6 @@
 ﻿using businesslayers.Interfaces;
 using datalayers.Abstract;
+using datalayers.Concrate;
 using entitylayers;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,14 @@ namespace businesslayers.Services
 {
     public class HaircutServiceService:GenericServices<HaircutService>,IHaircutServiceService
     {
-        private readonly IHaircutServiceDal _haircutServiceDal;
-        public HaircutServiceService(IHaircutServiceDal haircutServiceService):base (haircutServiceService)
+        private readonly IHaircutServiceDal _haircutServices;
+        public HaircutServiceService(IHaircutServiceDal haircutServices) : base(haircutServices)
         {
-            _haircutServiceDal = haircutServiceService;
 
+            _haircutServices = haircutServices;
         }
+       
+        public async Task<IEnumerable<HaircutService>> GetServicesByCategoryAsync(int categoryId)
+            => await _haircutServices.GetServicesByCategoryAsync(categoryId);
     }
 }

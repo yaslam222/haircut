@@ -34,7 +34,7 @@ namespace HaircutAPI.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(BeautyServiesItem beautyservicesitem)
         {
-            if (string.IsNullOrWhiteSpace(beautyservicesitem.Title) || string.IsNullOrWhiteSpace(beautyservicesitem.NumberText) || string.IsNullOrWhiteSpace(beautyservicesitem.ImagePath))
+            if (string.IsNullOrWhiteSpace(beautyservicesitem.Title) ||   string.IsNullOrWhiteSpace(beautyservicesitem.ImagePath))
                 return BadRequest("Title and NumberText cannot be empty.");
 
             await _beautyServiesItemService.AddAsync(beautyservicesitem);
@@ -48,7 +48,7 @@ namespace HaircutAPI.Controllers
             if (existing == null) return NotFound();
 
             existing.Title = updatedbeautyservicesitem.Title;
-            existing.NumberText = updatedbeautyservicesitem.NumberText;
+            
             existing.ImagePath = updatedbeautyservicesitem.ImagePath;
 
 

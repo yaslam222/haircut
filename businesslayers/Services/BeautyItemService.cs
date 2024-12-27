@@ -1,5 +1,6 @@
 ﻿using businesslayers.Interfaces;
 using datalayers.Abstract;
+using datalayers.Concrate;
 using entitylayers;
 using System;
 using System.Collections.Generic;
@@ -11,14 +12,17 @@ namespace businesslayers.Services
 {
     public class BeautyItemService : GenericServices<BeautyItem>, IBeautyItemService
     {
-        private readonly IBeautyItemDal _beautyItemDal;
-        public BeautyItemService(IBeautyItemDal beautyItemService) : base(beautyItemService)
+        private readonly IBeautyItemDal _beautyitemRepository;
+        private readonly IBeautyCategoryDal _categoryService; // Inject category service
+
+        public BeautyItemService(IBeautyItemDal beautyitemRepository, IBeautyCategoryDal categoryService) : base(beautyitemRepository)
         {
-            _beautyItemDal = beautyItemService;
+            _beautyitemRepository = beautyitemRepository;
+            _categoryService = categoryService;
         }
         public async Task<IEnumerable<BeautyItem>> GetByCategoryIdAsync(int categoryId)
         {
-            return await _beautyItemDal.GetByCategoryIdAsync(categoryId);
+            return await _beautyitemRepository.GetByCategoryIdAsync(categoryId);
         }
 
     }

@@ -11,10 +11,11 @@ namespace businesslayers.Services
 {
     public class FaqService:GenericServices<Faq>,IFaqService
     {
-        private readonly IFaqDal _faqDal;
-        public FaqService(IFaqDal faqservice):base(faqservice)
+        private readonly IFaqDal _faqRepository;
+
+        public FaqService(IFaqDal faqRepository) : base(faqRepository)
         {
-            _faqDal = faqservice;
+            _faqRepository = faqRepository;
         }
     }
 }

@@ -11,17 +11,18 @@ namespace businesslayers.Services
 {
     public class HaircutMenuItemService:GenericServices<HaircutMenuItem>,IHaircutMenuItemService
     {
-        private readonly IHaircutMenuItemDal _haircutmenuitemDal;
-        public HaircutMenuItemService(IHaircutMenuItemDal haircutmenuitemService) : base(haircutmenuitemService)
+        private readonly IHaircutMenuItemDal _haircutmenuitemRepository;
+        public HaircutMenuItemService(IHaircutMenuItemDal haircutmenuitemRepository) : base(haircutmenuitemRepository)
         {
-            _haircutmenuitemDal = haircutmenuitemService;
 
-
-
+            _haircutmenuitemRepository = haircutmenuitemRepository;
         }
+
+
+
         public async Task<IEnumerable<HaircutMenuItem>> GetAllWithCategoryAsync()
         {
-            return await _haircutmenuitemDal.GetAllWithCategoryAsync();
+            return await _haircutmenuitemRepository.GetAllWithCategoryAsync();
         }
     }   
 

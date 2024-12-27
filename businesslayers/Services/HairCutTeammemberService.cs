@@ -11,10 +11,11 @@ namespace businesslayers.Services
 {
     public class HairCutTeammemberService:GenericServices<HairCutTeammember>,IHairCutTeammemberService
     {
-        private readonly IHairCutTeammemberDal _haircutteammemberDal;
-        public HairCutTeammemberService(IHairCutTeammemberDal haircutteammemberService): base(haircutteammemberService)
+        private readonly IHairCutTeammemberDal _hairCutTeammember;
+
+        public HairCutTeammemberService(IHairCutTeammemberDal hairCutTeammember) : base(hairCutTeammember)
         {
-            _haircutteammemberDal = haircutteammemberService;
+            _hairCutTeammember = hairCutTeammember;
         }
     }
 }

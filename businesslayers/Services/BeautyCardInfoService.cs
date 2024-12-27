@@ -11,10 +11,11 @@ namespace businesslayers.Services
 {
     public class BeautyCardInfoService:GenericServices<BeautyCardInfo>,IBeautyCardInfoService
     {
-        private readonly IBeautyCardInfoDal _beautyCardInfoDal;
-        public BeautyCardInfoService(IBeautyCardInfoDal beautyCardInfoService) :base(beautyCardInfoService)
+        private readonly IBeautyCardInfoDal _beautyCardInfoRepository;
+
+        public BeautyCardInfoService(IBeautyCardInfoDal beautyCardInfoRepository) : base(beautyCardInfoRepository)
         {
-            _beautyCardInfoDal = beautyCardInfoService;
+            _beautyCardInfoRepository = beautyCardInfoRepository;
         }
     }
 }

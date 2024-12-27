@@ -11,14 +11,10 @@ namespace datalayers.Concrate
 {
     public class HaircutMenuCategoryDal:GenericRepository<HaircutMenuCategory>,IHaircutMenuCategoryDal
     {
-        public HaircutMenuCategoryDal(context _context) : base(_context)
+        private new readonly context _context;
+        public HaircutMenuCategoryDal(context context) : base(context)
         {
-        }
-        public async Task<IEnumerable<HaircutMenuItem>> GetHaircutMenuItemsByCategoryIdAsync(int categoryId)
-        {
-            return await _context.HaircutMenuItems
-                                 .Where(hmi => hmi.HaircutMenuCategoryId == categoryId && !hmi.IsDeleted)
-                                 .ToListAsync();
+            _context = context;
         }
     }
 }

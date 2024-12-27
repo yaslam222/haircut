@@ -11,11 +11,11 @@ namespace businesslayers.Services
 {
     public class HaircutServicesCategoryService:GenericServices<HaircutServicesCategory>,IHaircutServicesCategoryService
     {
-        private readonly IHaircutServicesCategoryDal _haircutservicescategoryDal;
-        public HaircutServicesCategoryService(IHaircutServicesCategoryDal HaircutservicescategoryService):base (HaircutservicescategoryService) 
-            
+        private readonly IHaircutServicesCategoryDal _haircutservicescategoryRepository;
+        public HaircutServicesCategoryService(IHaircutServicesCategoryDal haircutservicescategoryRepository) : base(haircutservicescategoryRepository)
         {
-            _haircutservicescategoryDal = HaircutservicescategoryService;
+
+            _haircutservicescategoryRepository = haircutservicescategoryRepository;
         }
     }
 }

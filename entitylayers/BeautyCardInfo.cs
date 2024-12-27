@@ -21,5 +21,6 @@ namespace entitylayers
         [StringLength(200)]
         public string? ImagePath { get; set; }
         public bool IsDeleted { get; set; } = false;
+
     }
 }

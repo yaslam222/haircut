@@ -21,7 +21,7 @@ namespace datalayers.Concrate
 
         public async Task<IEnumerable<HaircutSupService>> GetByServiceIdAsync(int serviceId)
         {
-            return await _context.HaircutSupServices
+            return await _context.HairCutSupServices
                 .Where(s => s.ServiceId == serviceId)
                 .ToListAsync();
         }

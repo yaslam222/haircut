@@ -11,10 +11,11 @@ namespace businesslayers.Services
 {
     public class ContactService:GenericServices<Contact>,IContactService
     {
-        private readonly IContactDal _contactDal;
-        public ContactService(IContactDal contactService):base(contactService)
+        private readonly IContactDal _contactRepository;
+
+        public ContactService(IContactDal contactRepository) : base(contactRepository)
         {
-            _contactDal = contactService;
+            _contactRepository = contactRepository;
         }
     }
 }

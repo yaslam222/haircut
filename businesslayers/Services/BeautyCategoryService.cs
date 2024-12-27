@@ -11,10 +11,11 @@ namespace businesslayers.Services
 {
     public class BeautyCategoryService : GenericServices<BeautyCategory>, IBeautyCategoryService
     {
-        private readonly IBeautyCategoryDal _beautyCategoryDal;
-        public BeautyCategoryService(IBeautyCategoryDal Beautycategoryservice) : base(Beautycategoryservice)
+        private readonly IBeautyCategoryDal _beautycategoryRepository;
+        public BeautyCategoryService(IBeautyCategoryDal categoryRepository) : base(categoryRepository)
         {
-            _beautyCategoryDal = Beautycategoryservice;
+
+            _beautycategoryRepository = categoryRepository;
         }
     }   
 }

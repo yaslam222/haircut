@@ -7,13 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\Template\vendor\jquery-smartwizard\.github\FUNDING.yml" />
-    <None Include="wwwroot\Template\vendor\jquery-smartwizard\.github\ISSUE_TEMPLATE\bug_report.md" />
-    <None Include="wwwroot\Template\vendor\jquery-smartwizard\.github\ISSUE_TEMPLATE\feature_request.md" />
-    <None Include="wwwroot\Template\vendor\jquery-smartwizard\.github\pull_request_template.md" />
-    <None Include="wwwroot\Template\vendor\tagify\.github\ISSUE_TEMPLATE\bug_report.md" />
-    <None Include="wwwroot\Template\vendor\tagify\.github\ISSUE_TEMPLATE\feature_request.md" />
-    <None Include="wwwroot\Template\vendor\tagify\.github\ISSUE_TEMPLATE\help-with-something.md" />
+    <Compile Remove="wwwroot\Template\**" />
+    <Content Remove="wwwroot\Template\**" />
+    <EmbeddedResource Remove="wwwroot\Template\**" />
+    <None Remove="wwwroot\Template\**" />
   </ItemGroup>
 
   <ItemGroup>

@@ -11,7 +11,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "businesslayers", "businessl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "haircutUI", "haircutUI\haircutUI.csproj", "{C16E4D7D-FF04-4A0D-A52D-CAEF6D548112}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaircutAPI", "HaircutAPI\HaircutAPI.csproj", "{AE9B2564-8321-4629-86ED-704E93BCD5C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HaircutAPI", "HaircutAPI\HaircutAPI.csproj", "{AE9B2564-8321-4629-86ED-704E93BCD5C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ECF48D7C-2361-44C9-96FF-B45C7646F8A0}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

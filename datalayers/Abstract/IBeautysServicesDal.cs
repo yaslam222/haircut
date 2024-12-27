@@ -9,5 +9,6 @@ namespace datalayers.Abstract
 {
     public interface IBeautysServicesDal : IGenericRepository<BeautysServices>
     {
+        Task<IEnumerable<BeautysServices>> GetByCategoryIdAsync(int categoryId);
     }
 }

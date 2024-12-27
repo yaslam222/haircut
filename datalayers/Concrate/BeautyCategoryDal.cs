@@ -16,12 +16,8 @@ namespace datalayers.Concrate
         {
 
         }
-        public async Task<BeautyCategory?> GetCategoryWithItemsAsync(int id)
-        {
-            return await _dbSet
-                .Include(c => c.BeautyItems)
-                .FirstOrDefaultAsync(c => c.Id == id);
-        }
+        
+        
 
 
 

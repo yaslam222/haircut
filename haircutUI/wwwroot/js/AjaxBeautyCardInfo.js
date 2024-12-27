@@ -1,99 +1,142 @@
-﻿$(function () {
+﻿$(document).ready(function () {
 
-    $('#btnSubmitFaq').on('click', function (e) {
-
-        e.preventDefault(); // prevent default form submission
-
-        // Serialize the form data
-        var formData = $('#FaqAdd').serialize();
-
-        $.ajax({
-            type: 'POST',
-            url: '/Admin/Faq/Create',
-            data: formData,
-            success: function (response) {
-                if (response.success) {
-                    $('.bd-example-modal-lg').modal('hide');
-
-                    location.reload();
-
-                    toastr.success(response.message);
-
-                } else {
-                    toastr.error("There was an error");
-                }
-            },
-            error: function (response) {
-                console.log("Error: " + response);
-            }
-        });
-    });
-    $(".btnEdit").on('click', function () {
+    // Handle Edit Button Click
+    $(document).on('click', '.btnEdit', function () {
         var id = $(this).data('id');
-        var quastion = $(this).data('quastion');
-        var answer = $(this).data('answer');
-        $('#editFaqId').val(id);
-        $('#editquastion').val(quastion);
-        $('#editAnswer').val(answer);
-    });
-    $("#btnEditFaq").on('click', function () {
-        var formData = $('#FaqEdit').serialize();  // Serialize the form data
+        var title = $(this).data('title');
+        var description = $(this).data('description');
+        var imagepath = $(this).data('imagepath');
 
-        // Making an AJAX request to submit the edited data
+        // Populate modal with current data
+        $('#editBeautyCardId').val(id);
+        $('#edittitle').val(title);
+        $('#editdescription').val(description);
+        $('#editimagepath').val(imagepath);
+    });
+
+    // Handle Submit for Edit
+    $('#btnEditBeautyCard').on('click', function () {
+        var isValid = true;
+
+        // Validate form inputs
+        $('#BeautyCardInfoEdit input[required]').each(function () {
+            if ($(this).val().trim() === '') {
+                isValid = false;
+                $(this).addClass('is-invalid');
+                $(this).next('.invalid-feedback').show();
+            } else {
+                $(this).removeClass('is-invalid');
+                $(this).next('.invalid-feedback').hide();
+            }
+        });
+
+        if (!isValid) {
+            toastr.error('Please fill out all required fields.');
+            return;
+        }
+
+        var formData = $('#BeautyCardInfoEdit').serialize(); // Serialize form data
+
+        // Disable submit button to prevent multiple submissions
+        $(this).prop('disabled', true);
+
         $.ajax({
             type: 'POST',
-            url: '/Admin/Faq/Edit',
+            url: '/Admin/BeautyCardInfo/Edit',
             data: formData,
             success: function (response) {
-                // Handle the response here
                 if (response.success) {
-                    toastr.success(response.message);
-                    location.reload();  // Reload the page to see updated data
+                    toastr.success('Beauty Card information updated successfully');
+                    location.reload();  // Reload the page after success
                 } else {
-                    toastr.error('Error updating the faq');
+                    toastr.error('Error updating the Beauty Card');
                 }
             },
-            error: function (error) {
-                console.log('Error updating the brand', error);
+            error: function () {
+                toastr.error('An error occurred while updating');
+            },
+            complete: function () {
+                $('#btnEditBeautyCard').prop('disabled', false); // Re-enable button
             }
         });
     });
 
+    // Handle Submit for Create
+    $('#btnSubmitCardInfo').on('click', function () {
+        var isValid = true;
 
-    $(document).on('click', '.DeleteFaq', function (e) {
-        e.preventDefault();
-        var Id = $(this).data('id');  // seçili kapasitenin ID'si alınıyor
+        // Validate form inputs
+        $('#CardInfoAdd input[required]').each(function () {
+            if ($(this).val().trim() === '') {
+                isValid = false;
+                $(this).addClass('is-invalid');
+                $(this).next('.invalid-feedback').show();
+            } else {
+                $(this).removeClass('is-invalid');
+                $(this).next('.invalid-feedback').hide();
+            }
+        });
 
-        // kullanıcıya silme işlemi için onay mesajı gösteriliyor
+        if (!isValid) {
+            toastr.error('Please fill out all required fields.');
+            return;
+        }
+
+        var formData = $('#CardInfoAdd').serialize(); // Serialize form data
+
+        // Disable submit button to prevent multiple submissions
+        $(this).prop('disabled', true);
+
+        $.ajax({
+            type: 'POST',
+            url: '/Admin/BeautyCardInfo/Create',
+            data: formData,
+            success: function (response) {
+                if (response.success) {
+                    toastr.success('Beauty Card information added successfully');
+                    location.reload();  // Reload the page after success
+                } else {
+                    toastr.error('Error adding the Beauty Card');
+                }
+            },
+            error: function () {
+                toastr.error('An error occurred while adding');
+            },
+            complete: function () {
+                $('#btnSubmitCardInfo').prop('disabled', false); // Re-enable button
+            }
+        });
+    });
+
+    // Handle Delete Button Click
+    $(document).on('click', '.DeleteBeautyCardInfo', function () {
+        var id = $(this).data('id');
+
         Swal.fire({
-            title: 'Emin misiniz?',
-            text: "Bu işlemi geri alamayacaksınız!",
+            title: 'Are you sure?',
+            text: "This action cannot be undone!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Evet, sil!'
+            confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                // onay alındıysa AJAX ile silme isteği gönderiliyor
                 $.ajax({
                     type: 'POST',
-                    url: '/Admin/Faq/Delete',
-                    data: { id: Id },
+                    url: '/Admin/BeautyCardInfo/Delete',
+                    data: { id: id },
                     success: function (response) {
                         if (response.success) {
-                            toastr.success(response.message);  // başarı mesajı gösteriliyor
-                            location.reload();  // başarı durumunda sayfa yenileniyor
+                            toastr.success('Beauty Card deleted successfully');
+                            location.reload();
                         } else {
-                            toastr.error('Hata', 'Öğe silinemedi.', 'error');  // hata mesajı gösteriliyor
+                            toastr.error('Error deleting the Beauty Card');
                         }
                     },
-                    error: function (xhr, status, error) {
-
-                        console.log('Hata', 'Öğeyi silerken bir hata oluştu.', 'error');  // genel hata mesajı gösteriliyor
+                    error: function () {
+                        toastr.error('An error occurred while deleting');
                     }
                 });
             }
         });
     });
-})
+});

@@ -11,10 +11,11 @@ namespace businesslayers.Services
 {
     public class CompanyService : GenericServices<Company>, ICompanyService
     {
-        private readonly ICompanyDal _companyDal;
-        public CompanyService(ICompanyDal companyservice) : base(companyservice)
+        private readonly ICompanyDal _companyRepository;
+
+        public CompanyService(ICompanyDal companyRepository) : base(companyRepository)
         {
-            _companyDal = companyservice;
+            _companyRepository = companyRepository;
         }
     }
          

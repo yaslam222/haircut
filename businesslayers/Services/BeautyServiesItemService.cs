@@ -1,5 +1,6 @@
 ﻿using businesslayers.Interfaces;
 using datalayers.Abstract;
+using datalayers.Concrate;
 using entitylayers;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,11 @@ namespace businesslayers.Services
 {
     public class BeautyServiesItemService:GenericServices<BeautyServiesItem>,IBeautyServiesItemService
     {
-        private readonly IBeautyServiesItemDal _beautyServiesItemDal;
-        public BeautyServiesItemService(IBeautyServiesItemDal beautyServiesItemservice) : base(beautyServiesItemservice)
+        private readonly IBeautyServiesItemDal _BeautyserviceitemRepository;
+
+        public BeautyServiesItemService(IBeautyServiesItemDal BeautyserviceitemRepository) : base(BeautyserviceitemRepository)
         {
-            _beautyServiesItemDal = beautyServiesItemservice;
+            _BeautyserviceitemRepository = BeautyserviceitemRepository;
         }
     }
 }

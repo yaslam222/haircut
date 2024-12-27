@@ -9,5 +9,7 @@ namespace businesslayers.Interfaces
 {
     public interface IHaircutServiceService : IGenericServices<HaircutService>
     {
+       
+        Task<IEnumerable<HaircutService>> GetServicesByCategoryAsync(int categoryId);
     }
 }
